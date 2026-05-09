@@ -1,0 +1,87 @@
+[build-system]
+requires      = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+# ---------------------------------------------------------------------------
+# Project metadata
+# ---------------------------------------------------------------------------
+
+[project]
+name        = "edmtgreen"
+version     = "0.1.0"
+description = "Python client for the GreenPulse geospatial monitoring API."
+readme      = "README.md"
+requires-python = ">=3.10"
+license     = { text = "MIT" }
+
+keywords = [
+    "gis", "geospatial", "conservation", "environmental-monitoring",
+    "greenpulse", "earth-observation",
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: GIS",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Typing :: Typed",
+]
+
+# Core runtime dependencies (versions from requirements.txt)
+dependencies = [
+    "requests>=2.33.1",
+    "pandas>=2.0",
+    "geopandas>=1.1.3",
+    "shapely>=2.1.2",
+    "numpy>=2.4.4",
+    "pyproj>=3.7.2",
+    "pyogrio>=0.12.1",
+]
+
+# ---------------------------------------------------------------------------
+# Optional extras
+# ---------------------------------------------------------------------------
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+    "pytest-cov",
+    "responses",   # mock HTTP calls in tests
+    "ruff",
+    "mypy",
+    "pandas-stubs",
+]
+
+# ---------------------------------------------------------------------------
+# Package discovery
+# ---------------------------------------------------------------------------
+
+[tool.setuptools.packages.find]
+where   = ["."]
+include = ["greenpulse_sdk*"]
+
+[tool.setuptools.package-data]
+greenpulse_sdk = ["py.typed"]
+
+# ---------------------------------------------------------------------------
+# Tool config
+# ---------------------------------------------------------------------------
+
+[tool.ruff]
+line-length    = 99
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP"]
+
+[tool.mypy]
+strict   = true
+packages = ["greenpulse_sdk"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts   = "-v --cov=greenpulse_sdk --cov-report=term-missing"
