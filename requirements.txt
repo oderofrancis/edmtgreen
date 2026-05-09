@@ -1,15 +1,19 @@
-certifi==2026.4.22
-charset-normalizer==3.4.7
-geopandas>=1
-idna==3.13
-numpy>2
-packaging==26.2
-pandas<3
-pyogrio==0.12.1
-pyproj==3.7.2
-python-dateutil==2.9.0.post0
-requests>=2.28,<3
-shapely==2.1.2
-six==1.17.0
-urllib3==2.7.0
+# HTTP
+requests>=2.28,<2.33
+certifi>=2024
+charset-normalizer>=3
+idna>=3
+urllib3>=2
 
+# Geospatial
+geopandas>=1
+shapely>=2.0
+pyproj>=3.4
+pyogrio>=0.7
+
+# Data
+numpy>=1.22,<2.1
+pandas>=1.5,<3
+python-dateutil>=2.8
+six>=1.16
+packaging>=23
