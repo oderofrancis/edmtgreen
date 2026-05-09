@@ -21,7 +21,7 @@ Quick start
         reports    = gp.get_reports()
 """
 
-from ._client import GreenPulse
+from ._client import GreenPulse,SPLITTER, STATUS
 from ._exceptions import (
     APIError,
     AuthenticationError,
@@ -29,7 +29,6 @@ from ._exceptions import (
     NotFoundError,
     ValidationError,
 )
-from ._types import SPLITTER, STATUS
 
 __all__ = [
     # Main client
